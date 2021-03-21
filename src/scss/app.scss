@@ -1,0 +1,38 @@
+@import "variables.scss";
+@import "mixins.scss";
+@import "colors.scss";
+@import "layout.scss";
+@import "fonts.scss";
+@import "nav.scss";
+
+//---------------------
+//SEARCH BAR
+//---------------------
+.search_results {
+  width: 100%;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+//---------------------
+//TOP PAGE
+//---------------------
+.top-page {
+  text-align: center;
+  height: 500px;
+}
+.top-page h1 {
+  margin: 30px 0px;
+}
+
+//---------------------
+//BLOG POSTS CARDS
+//---------------------
+.blog_post_card {
+  border-radius: 5px;
+  margin: 20px;
+  cursor: pointer;
+}
+.blog_post_card_item {
+  margin: 20px 10px;
+}

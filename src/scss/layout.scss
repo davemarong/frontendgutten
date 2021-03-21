@@ -1,0 +1,11 @@
+.top-page {
+  @include flexCenterColumn;
+}
+.blog_post_container h1 {
+  text-align: center;
+}
+.search {
+  position: absolute;
+  right: 5px;
+  top: 7px;
+}

@@ -1,0 +1,14 @@
+.blog_post_card {
+  border: 1px solid $brand-main;
+  box-shadow: 2px 2px 5px $brand-dark;
+}
+.blog_post_card:hover {
+  background-color: $white-hover;
+}
+.search_results {
+  border: 1px solid $brand-main;
+  box-shadow: 2px 2px 5px $brand-dark;
+}
+.search_results:hover {
+  background-color: $white-hover;
+}
