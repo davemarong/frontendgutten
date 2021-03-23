@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 export default function Card_Container() {
   const [data, setData] = useState([]);
@@ -17,9 +18,13 @@ export default function Card_Container() {
       {data.map((post) => {
         return (
           <>
-            <h1>{post.blogtitle}</h1>
-            <p>{post.description}</p>
-            <span>{post.date}</span>
+            <Link to="/posts/:id">
+              <div className="blog_post_card">
+                <h1 className="blog_post_card_item">{post.title}</h1>
+                <p className="blog_post_card_item">{post.description}</p>
+                <span className="blog_post_card_item">{post.date}</span>
+              </div>
+            </Link>
           </>
         );
       })}
