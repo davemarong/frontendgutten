@@ -17,9 +17,7 @@ export default function App() {
             <Card_Container />
           </Route>
           <Route path="/posts"></Route>
-          <Route path="/post/:postId">
-            <Post />
-          </Route>
+          <Route path="/post/:id" component={Post} />
           <Route path="/about"></Route>
           <Route path="/contact"></Route>
           <Route path="/">

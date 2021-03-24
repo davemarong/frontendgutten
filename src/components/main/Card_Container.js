@@ -18,7 +18,7 @@ export default function Card_Container() {
       {data.map((post) => {
         return (
           <>
-            <Link to="/posts/:id">
+            <Link to={"post/" + post.id}>
               <div className="blog_post_card">
                 <h1 className="blog_post_card_item">{post.title}</h1>
                 <p className="blog_post_card_item">{post.description}</p>
