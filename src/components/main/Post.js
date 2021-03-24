@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-export default function Post() {
+export default function Post({ match, location }) {
   const [blogPost, setBlogPost] = useState({});
-
+  console.log(match.params.id, location);
   useEffect(() => {
-    fetch("http://localhost:1337/posts/1")
+    fetch(`http://localhost:1337/posts/${match.params.id}`)
       .then((res) => res.json())
       .then((data) => {
         setBlogPost(data);
