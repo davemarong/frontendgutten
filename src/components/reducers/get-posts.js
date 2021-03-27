@@ -1,6 +1,6 @@
 const getPosts = (state = "", action) => {
   switch (action.type) {
-    case "posts":
+    case "POSTS":
       return state + action.payload;
     default:
       return state;
