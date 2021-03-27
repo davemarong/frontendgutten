@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 import Header from "./components/Header/Header";
-import Nav from "./components/Header/Nav";
 import Card_Container from "./components/main/Card_Container";
 import Post from "./components/main/Post";
 import TopPage from "./components/main/TopPage";
@@ -9,13 +13,10 @@ import "./scss/app.scss";
 export default function App() {
   return (
     <div>
-      <BrowserRouter>
+      <Router>
         <Header />
         <Switch>
-          <Route path="/home">
-            <TopPage />
-            <Card_Container />
-          </Route>
+          <Route path="/home" component={(TopPage, Card_Container)} />
           <Route path="/posts"></Route>
           <Route path="/post/:id" component={Post} />
           <Route path="/about"></Route>
@@ -24,7 +25,7 @@ export default function App() {
             <Redirect to="/home" />
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }
