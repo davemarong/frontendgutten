@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { postsAction } from "../actions/";
 export default function Card_Container() {
+  const getPosts = useSelector((state) => state.getPosts);
+  const dispatch = useDispatch();
   const [postData, setPostData] = useState([]);
 
   useEffect(() => {
@@ -9,6 +13,9 @@ export default function Card_Container() {
       .then((res) => res.json())
       .then((result) => {
         setPostData(result);
+        // dispatch(postsAction(result[0].title));
+        // console.log(getPosts);
+        // console.log(result);
       });
   }, []);
 

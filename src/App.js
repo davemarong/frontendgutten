@@ -10,16 +10,16 @@ import Card_Container from "./components/main/Card_Container";
 import Post from "./components/main/Post";
 import TopPage from "./components/main/TopPage";
 import "./scss/app.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { postsAction } from "./components/actions/index";
+// import { useSelector, useDispatch } from "react-redux";
+// import { postsAction } from "./components/actions/index";
 
 export default function App() {
-  const getPosts = useSelector((state) => state.getPosts);
-  const dispatch = useDispatch();
+  // const getPosts = useSelector((state) => state.getPosts);
+  // const dispatch = useDispatch();
   return (
     <div>
       <Router>
-        <div>
+        {/* <div>
           <h1>{getPosts}</h1>
           <button
             onClick={() => {
@@ -28,7 +28,7 @@ export default function App() {
           >
             knapp
           </button>
-        </div>
+        </div> */}
         <Header />
         {/* //   const counterReducer = useSelector((state) => state.counterReducer);
 //   const loggedReducer = useSelector((state) => state.loggedReducer);
