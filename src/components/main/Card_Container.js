@@ -25,11 +25,11 @@ export default function Card_Container() {
         return (
           <>
             <Link to={"post/" + post.id}>
-              <div className="blog_post_card">
+              <li key={post.id} className="blog_post_card">
                 <h1 className="blog_post_card_item">{post.title}</h1>
                 <p className="blog_post_card_item">{post.description}</p>
                 <span className="blog_post_card_item">{post.date}</span>
-              </div>
+              </li>
             </Link>
           </>
         );
