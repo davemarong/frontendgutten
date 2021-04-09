@@ -1,6 +1,12 @@
-export const get_posts = (result) => {
+export const get_posts = (posts) => {
   return {
     type: "GET_POSTS",
-    payload: result,
+    payload: posts,
+  };
+};
+export const get_post = (post) => {
+  return {
+    type: "GET_POST",
+    payload: post,
   };
 };

@@ -19,15 +19,13 @@ export default function Card_Container() {
     <div>
       {posts.map((post) => {
         return (
-          <>
+          <div key={post.id} className="blog_post_card">
             <Link to={"post/" + post.id}>
-              <div className="blog_post_card">
-                <h1 className="blog_post_card_item">{post.title}</h1>
-                <p className="blog_post_card_item">{post.description}</p>
-                <span className="blog_post_card_item">{post.date}</span>
-              </div>
+              <h1 className="blog_post_card_item">{post.title}</h1>
+              <p className="blog_post_card_item">{post.description}</p>
+              <span className="blog_post_card_item">{post.date}</span>
             </Link>
-          </>
+          </div>
         );
       })}
     </div>
