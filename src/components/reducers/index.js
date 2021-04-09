@@ -1,16 +1,9 @@
-import getPosts from "./get-posts";
+import postsReducer from "./posts";
+import postReducer from "./post";
 import { combineReducers } from "redux";
 
 const allReducers = combineReducers({
-  getPosts,
+  posts: postsReducer,
+  post: postReducer,
 });
 export default allReducers;
-// import counterReducer from "./counter";
-// import loggedReducer from "./logged";
-// import { combineReducers } from "redux";
-
-// const allReducers = combineReducers({
-//   counterReducer,
-//   loggedReducer,
-// });
-// export default allReducers;

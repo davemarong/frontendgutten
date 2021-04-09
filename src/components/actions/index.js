@@ -1,17 +1,12 @@
-export const postsAction = (result) => {
+export const get_posts = (posts) => {
   return {
-    type: "POSTS",
-    payload: result,
+    type: "GET_POSTS",
+    payload: posts,
   };
 };
-
-// export const increment = () => {
-//     return {
-//       type: "INCREMENT",
-//     };
-//   };
-//   export const decrement = () => {
-//     return {
-//       type: "DECREMENT",
-//     };
-//   };
+export const get_post = (post) => {
+  return {
+    type: "GET_POST",
+    payload: post,
+  };
+};

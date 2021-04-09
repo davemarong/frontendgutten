@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect } from "react";
+import { get_post } from "../actions/index";
+import { useDispatch, useSelector } from "react-redux";
 export default function Post({ match }) {
-  const [blogPost, setBlogPost] = useState({});
+  const dispatch = useDispatch();
+  const post = useSelector((state) => state.post);
   useEffect(() => {
     fetch(`http://localhost:1337/posts/${match.params.id}`)
       .then((res) => res.json())
       .then((data) => {
-        setBlogPost(data);
+        dispatch(get_post(data));
       });
   }, []);
   return (
     <div>
-      <h1>{blogPost.title}</h1>
-      <p>{blogPost.description}</p>
-      <p>{blogPost.content}</p>
+      <h1>{post.title}</h1>
+      <p>{post.description}</p>
+      <p>{post.content}</p>
     </div>
   );
 }
