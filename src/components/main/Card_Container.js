@@ -1,27 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { postsAction } from "../actions/";
+import { get_posts } from "../actions/index";
+
 export default function Card_Container() {
-  const getPosts = useSelector((state) => state.getPosts);
   const dispatch = useDispatch();
-  const [postData, setPostData] = useState([]);
+  const posts = useSelector((state) => state.posts);
 
   useEffect(() => {
     fetch("http://localhost:1337/posts")
       .then((res) => res.json())
       .then((result) => {
-        setPostData(result);
-        // dispatch(postsAction(result[0].title));
-        // console.log(getPosts);
-        // console.log(result);
+        dispatch(get_posts(result));
       });
   }, []);
-
   return (
     <div>
-      {postData.map((post) => {
+      {posts.map((post) => {
         return (
           <>
             <Link to={"post/" + post.id}>
