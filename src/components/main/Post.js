@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { get_post } from "../actions/index";
 import { useDispatch, useSelector } from "react-redux";
+import { Card } from "@material-ui/core";
 export default function Post({ match }) {
   const dispatch = useDispatch();
   const post = useSelector((state) => state.post);
@@ -13,9 +14,13 @@ export default function Post({ match }) {
   }, []);
   return (
     <div>
-      <h1>{post.title}</h1>
-      <p>{post.description}</p>
-      <p>{post.content}</p>
+      <div>
+        <Card>
+          <h1>{post.title}</h1>
+          <p>{post.description}</p>
+          <p>{post.content}</p>
+        </Card>
+      </div>
     </div>
   );
 }
