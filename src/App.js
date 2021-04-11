@@ -6,12 +6,11 @@ import {
   Switch,
 } from "react-router-dom";
 import Header from "./components/Header/Header";
-import MaterialUI from "./components/main/MaterialUI";
-import Card_Container from "./components/main/Card_Container";
-import Post from "./components/main/Post";
+import Card_Container from "./components/main/card/Card_Container";
+import Post from "./components/main/post/Post";
 import TopPage from "./components/main/TopPage";
-import Posts from "./components/main/Posts";
-import SignUp_In from "./components/main/SignUp_In";
+import Posts from "./components/main/posts/Posts";
+import SignUp_In from "./components/main/signUp_signIn/SignUp_In";
 
 export default function App() {
   return (

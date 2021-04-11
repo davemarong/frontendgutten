@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { get_post } from "../actions/index";
+import { get_post } from "../../actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import { Card } from "@material-ui/core";
 export default function Post({ match }) {
