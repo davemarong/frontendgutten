@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter, Link, Redirect, Route, Switch } from "react-router-dom";
-
+import menuItems from "./MenuItems";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -8,7 +8,6 @@ import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Typography from "@material-ui/core/Typography";
 import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -29,35 +28,19 @@ export default function Nav() {
       flexGrow: 1,
     },
     logo: {
-      flexGrow: 1,
+      flex: 1,
     },
     remove_underline: {
       textDecoration: "none",
     },
+    desktop_menuItems: {
+      display: "flex",
+      justifyContent: "space-between",
+      flex: 2,
+    },
   }));
   const classes = useStyles();
-  const menuItems = [
-    {
-      menuTitle: "Hjem",
-      pageURL: "/home",
-      id: 0,
-    },
-    {
-      menuTitle: "Innlegg",
-      pageURL: "/posts",
-      id: 1,
-    },
-    {
-      menuTitle: "Om",
-      pageURL: "/about",
-      id: 2,
-    },
-    {
-      menuTitle: "Kontakt",
-      pageURL: "/contact",
-      id: 3,
-    },
-  ];
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   console.log(isMobile);
@@ -123,22 +106,27 @@ export default function Nav() {
               </>
             ) : (
               <>
-                {menuItems.map((item) => {
-                  return (
-                    <Link
-                      className={classes.remove_underline}
-                      key={item.id}
-                      to={item.pageURL}
-                    >
-                      <Button onClick={handleClose}>{item.menuTitle}</Button>
-                    </Link>
-                  );
-                })}
-                <Link className={classes.remove_underline} to="/signUp_signIn">
-                  <Button color="primary" variant="contained">
-                    Logg Inn
-                  </Button>
-                </Link>
+                <div className={classes.desktop_menuItems}>
+                  {menuItems.map((item) => {
+                    return (
+                      <Link
+                        className={classes.remove_underline}
+                        key={item.id}
+                        to={item.pageURL}
+                      >
+                        <Button onClick={handleClose}>{item.menuTitle}</Button>
+                      </Link>
+                    );
+                  })}
+                  <Link
+                    className={classes.remove_underline}
+                    to="/signUp_signIn"
+                  >
+                    <Button color="primary" variant="contained">
+                      Logg Inn
+                    </Button>
+                  </Link>
+                </div>
               </>
             )}
           </div>
