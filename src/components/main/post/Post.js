@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import PostLogic from "./PostLogic";
 import profileImg from "../../../images/dave_12d499782b.png";
+import PreviousPage from "../../reUseable/PreviousPage";
 const useStyles = makeStyles((theme) => ({
   root: {},
   width: {
@@ -15,13 +16,15 @@ const useStyles = makeStyles((theme) => ({
   },
   ok: { marginLeft: 100, marginRight: 100 },
 }));
+
 export default function Post({ match }) {
   const classes = useStyles();
   const post = useSelector((state) => state.post);
+
   return (
     <div>
       <PostLogic id={match.params.id} />
-
+      <PreviousPage />
       <Grid container direction="column" alignItems="left">
         <Grid item xs={12} sm={8}>
           <Typography variant="h4" align="left">
@@ -51,14 +54,4 @@ export default function Post({ match }) {
       </Grid>
     </div>
   );
-}
-{
-  /* <Grid item xs={6}>
-</Grid>
-
-<div>
-  <h1>{post.title}</h1>
-  <p>{post.description}</p>
-  <p>{post.content}</p>
-</div> */
 }
