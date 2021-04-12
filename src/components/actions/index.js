@@ -10,3 +10,9 @@ export const get_post = (post) => {
     payload: post,
   };
 };
+export const get_profileimage = (url) => {
+  return {
+    type: "GET_PROFILEIMAGE",
+    payload: url,
+  };
+};
