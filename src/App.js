@@ -11,6 +11,7 @@ import Post from "./components/main/post/Post";
 import TopPage from "./components/main/TopPage";
 import Posts from "./components/main/posts/Posts";
 import SignUp_In from "./components/main/signUp_signIn/SignUp_In";
+import PostLogic from "./components/main/post/PostLogic";
 
 export default function App() {
   return (
