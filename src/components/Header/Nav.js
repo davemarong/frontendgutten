@@ -59,7 +59,7 @@ export default function Nav() {
           <div>
             {isMobile ? (
               <>
-                <Link className={classes.remove_underline} to="/signUp_signIn">
+                <Link className={classes.remove_underline} to="/login">
                   <Button color="primary" variant="contained">
                     Logg Inn
                   </Button>
@@ -116,10 +116,7 @@ export default function Nav() {
                       </Link>
                     );
                   })}
-                  <Link
-                    className={classes.remove_underline}
-                    to="/signUp_signIn"
-                  >
+                  <Link className={classes.remove_underline} to="/login">
                     <Button color="primary" variant="contained">
                       Logg Inn
                     </Button>
