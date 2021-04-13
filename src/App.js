@@ -13,6 +13,8 @@ import Posts from "./components/main/posts/Posts";
 import SignUp_In from "./components/main/signUp_signIn/SignUp_In";
 import PostLogic from "./components/main/post/PostLogic";
 import Contact from "./components/main/contact/Contact";
+import LogIn from "./components/main/signUp_signIn/LogIn";
+import Register from "./components/main/signUp_signIn/Register";
 
 export default function App() {
   return (
@@ -24,6 +26,8 @@ export default function App() {
           <Route path="/posts" component={Posts} />
           <Route path="/post/:id" component={Post} />
           <Route path="/signUp_signIn" component={SignUp_In} />
+          <Route path="/login" component={LogIn} />
+          <Route path="/register" component={Register} />
           <Route path="/about"></Route>
           <Route path="/contact" component={Contact} />
           <Route path="/">
