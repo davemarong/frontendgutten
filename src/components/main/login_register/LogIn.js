@@ -7,10 +7,18 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import SaveIcon from "@material-ui/icons/Save";
 import useClasses from "./useClasses";
+import useLoginUser from "./useLoginUser";
+import useControlledInputs from "./useControlledInputs";
 
 export default function LogIn() {
   const { classes } = useClasses();
-
+  const { handleLogInUser } = useLoginUser();
+  const {
+    handleEmailInput,
+    handlePasswordInput,
+    email,
+    password,
+  } = useControlledInputs();
   return (
     <div>
       <Container maxWidth="xs" component="main">
@@ -23,6 +31,7 @@ export default function LogIn() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                onChange={handleEmailInput}
                 fullWidth
                 variant="outlined"
                 margin="normal"
@@ -33,6 +42,7 @@ export default function LogIn() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                onChange={handlePasswordInput}
                 fullWidth
                 variant="outlined"
                 margin="normal"
@@ -43,6 +53,9 @@ export default function LogIn() {
             </Grid>
             <Grid item xs={12}>
               <Button
+                onClick={() => {
+                  handleLogInUser(email, password);
+                }}
                 className={classes.submit}
                 color="primary"
                 fullWidth
