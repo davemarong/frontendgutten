@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import PostLogic from "./PostLogic";
-import profileImg from "../../../images/dave_12d499782b.png";
+import authorProfileImg from "../../../images/dave_12d499782b.png";
 import PreviousPage from "../../reUseable/PreviousPage";
 import useClasses from "./useClasses";
 
@@ -41,7 +41,7 @@ export default function Post({ match }) {
           </Grid>
           <Grid container alignItems="center" justify="center">
             <Grid item xs={2} sm={2} md={1}>
-              <img src={profileImg} height="50" />
+              <img src={authorProfileImg} height="50" />
             </Grid>
             <Grid container item xs={10} sm={6} md={8} direction="column">
               <Typography>{post.name}</Typography>
