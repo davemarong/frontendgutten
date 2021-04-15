@@ -11,6 +11,8 @@ import FetchPosts from "./FetchPosts";
 import { makeStyles } from "@material-ui/core";
 export default function Posts() {
   const posts = useSelector((state) => state.posts);
+  const isLogged = useSelector((state) => state.isLogged);
+  const userProfileData = useSelector((state) => state.userProfileData);
   let history = useHistory();
 
   const useStyles = makeStyles((theme) => ({
@@ -24,6 +26,11 @@ export default function Posts() {
   };
   return (
     <div>
+      {isLogged ? (
+        <Typography>Welcome, {userProfileData.username} </Typography>
+      ) : (
+        ""
+      )}
       <FetchPosts />
       <Grid container spacing={3}>
         {posts.map((post) => {

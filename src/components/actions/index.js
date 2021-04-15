@@ -31,11 +31,11 @@ export const get_user_profile_info = (
   return {
     type: "GET_USER_PROFILE_INFO",
     payload: {
-      FirstName: firstName,
-      LastName: lastName,
-      Email: email,
-      Id: id,
-      Username: username,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      id: id,
+      username: username,
     },
   };
 };
