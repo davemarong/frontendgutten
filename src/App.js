@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -9,11 +8,10 @@ import Header from "./components/Header/Header";
 import Card_Container from "./components/main/card/Card_Container";
 import Post from "./components/main/post/Post";
 import Posts from "./components/main/posts/Posts";
-import PostLogic from "./components/main/post/PostLogic";
 import Contact from "./components/main/contact/Contact";
 import LogIn from "./components/main/login_register/LogIn";
 import Register from "./components/main/login_register/Register";
-
+import MyPage from "./components/main/myPage/MyPage";
 export default function App() {
   return (
     <div>
@@ -25,6 +23,7 @@ export default function App() {
           <Route path="/post/:id" component={Post} />
           <Route path="/login" component={LogIn} />
           <Route path="/register" component={Register} />
+          <Route path="/myPage" component={MyPage} />
           <Route path="/about" />
           <Route path="/contact" component={Contact} />
           <Route path="/">

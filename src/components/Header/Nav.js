@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { BrowserRouter, Link, Redirect, Route, Switch } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import menuItems from "./MenuItems";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -11,9 +12,11 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import IconButton from "@material-ui/core/IconButton";
-
+import Classes from "./Classes";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 export default function Nav() {
+  const { classes } = Classes();
+  const isLogged = useSelector((state) => state.isLogged);
   const [anchorEl, setAnchorEl] = useState(null);
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -22,23 +25,6 @@ export default function Nav() {
     setAnchorEl(null);
   };
   const open = Boolean(anchorEl);
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
-    logo: {
-      flex: 1,
-    },
-    remove_underline: {
-      textDecoration: "none",
-    },
-    desktop_menuItems: {
-      display: "flex",
-      justifyContent: "space-between",
-      flex: 2,
-    },
-  }));
-  const classes = useStyles();
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
@@ -59,12 +45,21 @@ export default function Nav() {
           <div>
             {isMobile ? (
               <>
-                <Link className={classes.remove_underline} to="/login">
-                  <Button color="primary" variant="contained">
-                    Logg Inn
-                  </Button>
-                </Link>
+                {isLogged ? (
+                  <IconButton className={classes.accountIconMobile}>
+                    <Link to="/myPage">
+                      <AccountCircle />
+                    </Link>
+                  </IconButton>
+                ) : (
+                  <Link className={classes.remove_underline} to="/login">
+                    <Button color="primary" variant="contained">
+                      Logg Inn
+                    </Button>
+                  </Link>
+                )}
                 <Menu
+                  className={classes.menu}
                   id="menu-appbar"
                   anchorEl={anchorEl}
                   anchorOrigin={{
@@ -116,11 +111,19 @@ export default function Nav() {
                       </Link>
                     );
                   })}
-                  <Link className={classes.remove_underline} to="/login">
-                    <Button color="primary" variant="contained">
-                      Logg Inn
-                    </Button>
-                  </Link>
+                  {isLogged ? (
+                    <IconButton>
+                      <Link to="/myPage">
+                        <AccountCircle className={classes.accountIconDesktop} />
+                      </Link>
+                    </IconButton>
+                  ) : (
+                    <Link className={classes.remove_underline} to="/login">
+                      <Button color="primary" variant="contained">
+                        Logg Inn
+                      </Button>
+                    </Link>
+                  )}
                 </div>
               </>
             )}
