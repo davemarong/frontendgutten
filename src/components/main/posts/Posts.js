@@ -27,7 +27,9 @@ export default function Posts() {
   return (
     <div>
       {isLogged ? (
-        <Typography>Welcome, {userProfileData.username} </Typography>
+        <Typography align="center" variant="h4" component="h1">
+          Welcome, {userProfileData.firstName}
+        </Typography>
       ) : (
         ""
       )}

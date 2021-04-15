@@ -25,8 +25,8 @@ export default function useLoginUser() {
         dispatch(log_in_out(true));
         dispatch(
           get_user_profile_info(
-            "first",
-            "last",
+            response.data.user.firstName,
+            response.data.user.lastName,
             response.data.user.email,
             response.data.user.id,
             response.data.user.username

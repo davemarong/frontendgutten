@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -8,7 +9,9 @@ import TextField from "@material-ui/core/TextField";
 import useClasses from "./useClasses";
 import useControlledInputs from "./useControlledInputs";
 import useRegisterUser from "./useRegisterUser";
+import useRegisterUserData from "./useRegisterUserData";
 export default function Register() {
+  const history = useHistory();
   const {
     handleEmailInput,
     handleFirstNameInput,
@@ -19,6 +22,11 @@ export default function Register() {
     firstName,
     lastName,
   } = useControlledInputs();
+  const {
+    handleRegisterUserData,
+    jwt,
+    userProfileData,
+  } = useRegisterUserData();
   const { handleRegisterUser } = useRegisterUser();
   const { classes } = useClasses();
   return (
@@ -79,7 +87,13 @@ export default function Register() {
             <Grid item xs={12}>
               <Button
                 onClick={() => {
-                  handleRegisterUser(email, password);
+                  handleRegisterUser(
+                    email,
+                    password,
+                    firstName,
+                    lastName,
+                    history
+                  );
                 }}
                 className={classes.submit}
                 color="primary"
