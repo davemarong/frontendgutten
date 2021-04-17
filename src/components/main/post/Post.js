@@ -1,4 +1,6 @@
 import React from "react";
+import useClassesTypography from "../../../fonts/useClassesTypography";
+
 import { useSelector } from "react-redux";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -7,8 +9,11 @@ import PostLogic from "./PostLogic";
 import authorProfileImg from "../../../images/dave_12d499782b.png";
 import PreviousPage from "../../reUseable/PreviousPage";
 import useClasses from "./useClasses";
+import Footer from "../footer/Footer";
 
 export default function Post({ match }) {
+  const { classesTypography } = useClassesTypography();
+
   const { classes } = useClasses();
   const post = useSelector((state) => state.post);
 
@@ -29,12 +34,20 @@ export default function Post({ match }) {
           </Grid>
           <Grid container justify="center">
             <Grid item xs={12} sm={8} md={9}>
-              <Typography variant="h4" align="left">
+              <Typography
+                className={classesTypography.h}
+                variant="h4"
+                align="left"
+              >
                 {post.title}
               </Typography>
             </Grid>
             <Grid item xs={12} sm={8} md={9}>
-              <Typography variant="h5" align="left">
+              <Typography
+                className={classesTypography.p}
+                variant="h5"
+                align="left"
+              >
                 {post.description}
               </Typography>
             </Grid>
@@ -44,13 +57,20 @@ export default function Post({ match }) {
               <img src={authorProfileImg} height="50" />
             </Grid>
             <Grid container item xs={10} sm={6} md={8} direction="column">
-              <Typography>{post.name}</Typography>
-              <Typography>{post.date}</Typography>
-              <Typography>{post.howLongToRead}</Typography>
+              <Typography className={classesTypography.p}>
+                {post.name}
+              </Typography>
+              <Typography className={classesTypography.p}>
+                {post.date}
+              </Typography>
+              <Typography className={classesTypography.p}>
+                {post.howLongToRead}
+              </Typography>
             </Grid>
           </Grid>
         </Grid>
       </Container>
+      <Footer />
     </div>
   );
 }

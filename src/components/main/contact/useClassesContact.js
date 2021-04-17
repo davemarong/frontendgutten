@@ -11,6 +11,13 @@ export default function useClassesContact() {
       position: "relative",
       left: 164,
     },
+    alert: {
+      padding: 4,
+      border: "1px solid black",
+    },
+    marginTop: {
+      marginTop: 50,
+    },
   }));
   const classesContact = useStyles();
   return { classesContact };
