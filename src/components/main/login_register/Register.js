@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import useClassesTypography from "../../../fonts/useClassesTypography";
+
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Container from "@material-ui/core/Container";
@@ -11,6 +13,8 @@ import useControlledInputs from "./useControlledInputs";
 import useRegisterUser from "./useRegisterUser";
 import useRegisterUserData from "./useRegisterUserData";
 export default function Register() {
+  const { classesTypography } = useClassesTypography();
+
   const history = useHistory();
   const {
     handleEmailInput,
@@ -35,7 +39,12 @@ export default function Register() {
         <form className={classes.form}>
           <Grid container>
             <Grid item xs={12}>
-              <Typography align="center" component="h1" variant="h5">
+              <Typography
+                className={classesTypography.h}
+                align="center"
+                component="h1"
+                variant="h4"
+              >
                 Sign up
               </Typography>
             </Grid>
@@ -95,17 +104,20 @@ export default function Register() {
                     history
                   );
                 }}
-                className={classes.submit}
+                className={[classes.submit, classesTypography.button].join(" ")}
                 color="primary"
                 fullWidth
                 variant="contained"
               >
-                Registrer
+                Register
               </Button>
             </Grid>
             <Grid item xs={12}>
               <Typography align="right">
-                <Link className={classes.link} to="/login">
+                <Link
+                  className={[classes.link, classesTypography.p].join(" ")}
+                  to="/login"
+                >
                   Already have an account? Sign in
                 </Link>
               </Typography>
