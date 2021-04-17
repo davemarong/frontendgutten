@@ -1,21 +1,21 @@
 const menuItems = [
   {
-    menuTitle: "Hjem",
+    menuTitle: "Home",
     pageURL: "/home",
     id: 0,
   },
+  // {
+  //   menuTitle: "Innlegg",
+  //   pageURL: "/posts",
+  //   id: 1,
+  // },
   {
-    menuTitle: "Innlegg",
-    pageURL: "/posts",
-    id: 1,
-  },
-  {
-    menuTitle: "Om",
+    menuTitle: "About",
     pageURL: "/about",
     id: 2,
   },
   {
-    menuTitle: "Kontakt",
+    menuTitle: "Contact",
     pageURL: "/contact",
     id: 3,
   },

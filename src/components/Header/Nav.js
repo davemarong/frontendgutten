@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useClassesTypography from "../../fonts/useClassesTypography";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import menuItems from "./MenuItems";
@@ -15,6 +16,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Classes from "./Classes";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 export default function Nav() {
+  const { classesTypography } = useClassesTypography();
   const { classes } = Classes();
   const isLogged = useSelector((state) => state.isLogged);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -36,9 +38,9 @@ export default function Nav() {
         color="transparent"
       >
         <Toolbar>
-          <Typography className={classes.logo}>
+          <Typography className={[classes.logo, classesTypography.h].join(" ")}>
             <Link className={classes.remove_underline} to="/home">
-              FrontEndGutten
+              FrontEndDave
             </Link>
           </Typography>
 
@@ -53,8 +55,12 @@ export default function Nav() {
                   </IconButton>
                 ) : (
                   <Link className={classes.remove_underline} to="/login">
-                    <Button color="primary" variant="contained">
-                      Logg Inn
+                    <Button
+                      color="primary"
+                      variant="contained"
+                      className={classesTypography.button}
+                    >
+                      LOG IN
                     </Button>
                   </Link>
                 )}
@@ -81,7 +87,10 @@ export default function Nav() {
                         key={item.id}
                         to={item.pageURL}
                       >
-                        <MenuItem onClick={handleClose}>
+                        <MenuItem
+                          onClick={handleClose}
+                          className={classesTypography.h}
+                        >
                           {item.menuTitle}
                         </MenuItem>
                       </Link>
@@ -107,7 +116,12 @@ export default function Nav() {
                         key={item.id}
                         to={item.pageURL}
                       >
-                        <Button onClick={handleClose}>{item.menuTitle}</Button>
+                        <Button
+                          onClick={handleClose}
+                          className={classesTypography.h}
+                        >
+                          {item.menuTitle}
+                        </Button>
                       </Link>
                     );
                   })}
@@ -119,8 +133,12 @@ export default function Nav() {
                     </IconButton>
                   ) : (
                     <Link className={classes.remove_underline} to="/login">
-                      <Button color="primary" variant="contained">
-                        Logg Inn
+                      <Button
+                        color="primary"
+                        variant="contained"
+                        className={classesTypography.button}
+                      >
+                        LOG IN
                       </Button>
                     </Link>
                   )}
