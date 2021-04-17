@@ -1,4 +1,6 @@
 import React from "react";
+import useClassesTypography from "../../../fonts/useClassesTypography";
+
 import { Link } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -11,6 +13,8 @@ import useLoginUser from "./useLoginUser";
 import useControlledInputs from "./useControlledInputs";
 
 export default function LogIn() {
+  const { classesTypography } = useClassesTypography();
+
   const { classes } = useClasses();
   const { handleLogInUser } = useLoginUser();
   const {
@@ -25,7 +29,12 @@ export default function LogIn() {
         <form className={classes.form}>
           <Grid container spacing={1}>
             <Grid item xs={12}>
-              <Typography align="center" variant="h5" component="h1">
+              <Typography
+                className={classesTypography.h}
+                align="center"
+                variant="h4"
+                component="h1"
+              >
                 Log In
               </Typography>
             </Grid>
@@ -56,7 +65,7 @@ export default function LogIn() {
                 onClick={() => {
                   handleLogInUser(email, password);
                 }}
-                className={classes.submit}
+                className={[classes.submit, classesTypography.button].join(" ")}
                 color="primary"
                 fullWidth
                 variant="contained"
@@ -66,7 +75,10 @@ export default function LogIn() {
             </Grid>
             <Grid item xs={12}>
               <Typography align="right">
-                <Link className={classes.link} to="/register">
+                <Link
+                  className={[classes.link, classesTypography.p].join(" ")}
+                  to="/register"
+                >
                   Don't have an account? Sign up
                 </Link>
               </Typography>
