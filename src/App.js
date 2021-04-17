@@ -12,6 +12,7 @@ import Contact from "./components/main/contact/Contact";
 import LogIn from "./components/main/login_register/LogIn";
 import Register from "./components/main/login_register/Register";
 import MyPage from "./components/main/myPage/MyPage";
+import About from "./components/main/about/About";
 export default function App() {
   return (
     <div>
@@ -24,7 +25,7 @@ export default function App() {
           <Route path="/login" component={LogIn} />
           <Route path="/register" component={Register} />
           <Route path="/myPage" component={MyPage} />
-          <Route path="/about" />
+          <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
           <Route path="/">
             <Redirect to="/home" />
