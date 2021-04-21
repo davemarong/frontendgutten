@@ -12,7 +12,7 @@ export default function useRegisterUser() {
     history
   ) => {
     axios
-      .post("http://localhost:1337/auth/local/register", {
+      .post("https://front-end-dave.herokuapp.com/auth/local/register", {
         username: email,
         email: email,
         password: password,

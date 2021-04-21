@@ -5,7 +5,7 @@ export default function FetchPosts() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("http://localhost:1337/posts")
+    fetch("https://front-end-dave.herokuapp.com/posts")
       .then((res) => res.json())
       .then((result) => {
         dispatch(get_posts(result));

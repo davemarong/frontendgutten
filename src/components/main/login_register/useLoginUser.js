@@ -16,7 +16,7 @@ export default function useLoginUser() {
   };
   const handleLogInUser = (email, password) => {
     axios
-      .post("http://localhost:1337/auth/local", {
+      .post("https://front-end-dave.herokuapp.com/auth/local", {
         identifier: email,
         password: password,
       })

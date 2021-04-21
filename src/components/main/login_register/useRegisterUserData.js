@@ -4,7 +4,7 @@ import axios from "axios";
 export default function useRegisterUserData() {
   const handleRegisterUserData = async (firstName, lastName, jwt, id) => {
     const res = await axios.put(
-      `http://localhost:1337/users/${id}`,
+      `https://front-end-dave.herokuapp.com/users/${id}`,
       {
         firstName: firstName,
         lastName: lastName,
