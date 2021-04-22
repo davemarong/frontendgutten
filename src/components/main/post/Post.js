@@ -1,5 +1,6 @@
 import React from "react";
 import useClassesTypography from "../../../fonts/useClassesTypography";
+import Avatar from "@material-ui/core/Avatar";
 
 import { useSelector } from "react-redux";
 import Container from "@material-ui/core/Container";
@@ -54,7 +55,10 @@ export default function Post({ match }) {
           </Grid>
           <Grid container alignItems="center" justify="center">
             <Grid item xs={2} sm={2} md={1}>
-              <img src={authorProfileImg} height="50" />
+              <Avatar color="secondary" className={classes.avatar}>
+                DM
+              </Avatar>
+              {/* <img src={authorProfileImg} height="50" /> */}
             </Grid>
             <Grid container item xs={10} sm={6} md={8} direction="column">
               <Typography className={classesTypography.p}>

@@ -11,7 +11,7 @@ export default function Footer() {
     <div>
       <Grid container>
         <Grid container justify="center" item>
-          <Grid item xs={8}>
+          <Grid container item justify="center" xs={8}>
             <hr className={classesFooter.hr} />
           </Grid>
         </Grid>
