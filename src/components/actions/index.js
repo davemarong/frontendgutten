@@ -39,3 +39,10 @@ export const get_user_profile_info = (
     },
   };
 };
+
+export const show_load_spinner = (boolean) => {
+  return {
+    type: "SHOW_LOAD_SPINNER",
+    payload: boolean,
+  };
+};

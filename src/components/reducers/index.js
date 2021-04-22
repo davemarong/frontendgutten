@@ -4,6 +4,7 @@ import profileImageReducer from "./profileImage";
 import { combineReducers } from "redux";
 import isLoggedReducer from "./isLogged";
 import userProfileInfoReducer from "./userProfileInfo";
+import isLoadingReducer from "./isLoading";
 
 const allReducers = combineReducers({
   posts: postsReducer,
@@ -11,5 +12,6 @@ const allReducers = combineReducers({
   authorProfileImage: profileImageReducer,
   isLogged: isLoggedReducer,
   userProfileData: userProfileInfoReducer,
+  isLoading: isLoadingReducer,
 });
 export default allReducers;

@@ -1,4 +1,5 @@
 import React from "react";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import useClassesContact from "../contact/useClassesContact";
 import useClassesTypography from "../../../fonts/useClassesTypography";
 import { useHistory } from "react-router-dom";
@@ -15,6 +16,7 @@ import Footer from "../footer/Footer";
 export default function Posts() {
   const { classesTypography } = useClassesTypography();
   const { classesContact } = useClassesContact();
+  const isLoading = useSelector((state) => state.isLoading);
   const posts = useSelector((state) => state.posts);
   const isLogged = useSelector((state) => state.isLogged);
   const userProfileData = useSelector((state) => state.userProfileData);
@@ -24,6 +26,9 @@ export default function Posts() {
     root: {
       margin: 50,
     },
+    margintop: {
+      marginTop: 50,
+    },
   }));
   const classes = useStyles();
   const handleRedirect = (id) => {
@@ -32,18 +37,32 @@ export default function Posts() {
   return (
     <div>
       {isLogged ? (
-        <Typography
-          className={[classesTypography.h, classesContact.marginTop].join(" ")}
-          align="center"
-          variant="h4"
-          component="h1"
-        >
-          Welcome, {userProfileData.firstName}
-        </Typography>
+        <div>
+          <Typography
+            className={[classesTypography.h, classesContact.marginTop].join(
+              " "
+            )}
+            align="center"
+            variant="h4"
+            component="h1"
+          >
+            Welcome, {userProfileData.firstName}
+          </Typography>
+        </div>
       ) : (
         ""
       )}
       <FetchPosts />
+
+      {isLoading ? (
+        <Grid container justify="center" className={classes.margintop}>
+          <Grid item>
+            <CircularProgress color="primary" />
+          </Grid>
+        </Grid>
+      ) : (
+        <div></div>
+      )}
       <Grid container spacing={3}>
         {posts.map((post) => {
           return (
