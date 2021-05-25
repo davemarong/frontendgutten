@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import useClassesTypography from "../../../fonts/useClassesTypography";
 
 import { useHistory } from "react-router-dom";
@@ -12,6 +12,9 @@ import useClasses from "./useClasses";
 import useControlledInputs from "./useControlledInputs";
 import useRegisterUser from "./useRegisterUser";
 import useRegisterUserData from "./useRegisterUserData";
+import Checkbox from "@material-ui/core/Checkbox";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 export default function Register() {
   const { classesTypography } = useClassesTypography();
 
@@ -26,13 +29,18 @@ export default function Register() {
     firstName,
     lastName,
   } = useControlledInputs();
-  const {
-    handleRegisterUserData,
-    jwt,
-    userProfileData,
-  } = useRegisterUserData();
+  const { handleRegisterUserData, jwt, userProfileData, loading } =
+    useRegisterUserData();
   const { handleRegisterUser } = useRegisterUser();
   const { classes } = useClasses();
+  const passwordRef = useRef();
+  const togglePasswordType = () => {
+    if (passwordRef.current.type === "text") {
+      passwordRef.current.type = "password";
+    } else if (passwordRef.current.type === "password") {
+      passwordRef.current.type = "text";
+    }
+  };
   return (
     <div>
       <Container component="main" maxWidth="xs">
@@ -85,13 +93,19 @@ export default function Register() {
             <Grid item xs={12}>
               <TextField
                 onChange={handlePasswordInput}
+                inputRef={passwordRef}
                 variant="outlined"
                 margin="normal"
                 fullWidth
                 id="password"
                 label="Password"
                 name="password"
+                type="password"
               ></TextField>
+            </Grid>
+            <Grid container alignItems="center" item xs={12}>
+              <Typography>Show password</Typography>
+              <Checkbox onChange={togglePasswordType} />
             </Grid>
             <Grid item xs={12}>
               <Button
@@ -121,6 +135,9 @@ export default function Register() {
                   Already have an account? Sign in
                 </Link>
               </Typography>
+            </Grid>
+            <Grid container justify="center" item>
+              {loading ? <CircularProgress /> : null}
             </Grid>
           </Grid>
         </form>

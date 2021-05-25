@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import useControlledInputs from "./useControlledInputs";
 import { useDispatch } from "react-redux";
 import { log_in_out, get_user_profile_info } from "../../actions/index";
-
+import { useSnackbar } from "notistack";
 export default function useLoginUser() {
   const { email, password, firstName, lastName } = useControlledInputs();
   const isLogged = useSelector((state) => state.isLogged);
@@ -14,7 +14,12 @@ export default function useLoginUser() {
   const redirectToHomePage = () => {
     history.push("/home");
   };
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const [loading, setLoading] = useState(false);
+
   const handleLogInUser = (email, password) => {
+    setLoading(true);
+
     axios
       .post("https://front-end-dave.herokuapp.com/auth/local", {
         identifier: email,
@@ -32,6 +37,11 @@ export default function useLoginUser() {
             response.data.user.username
           )
         );
+        setLoading(false);
+        enqueueSnackbar(`Login successful`, {
+          variant: "success",
+          autoHideDuration: 4000,
+        });
         console.log(
           "Welcome inside, my friend. You have met with a wonderfull fate, havent you?"
         );
@@ -39,9 +49,14 @@ export default function useLoginUser() {
         redirectToHomePage();
       })
       .catch((error) => {
+        setLoading(false);
+        enqueueSnackbar(`${error.response.data.data[0].messages[0].message}`, {
+          variant: "error",
+          autoHideDuration: 4000,
+        });
         console.log("An error occurred:", error.response);
       });
   };
 
-  return { handleLogInUser };
+  return { handleLogInUser, loading };
 }

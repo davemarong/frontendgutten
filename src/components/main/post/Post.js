@@ -72,6 +72,11 @@ export default function Post({ match }) {
               </Typography>
             </Grid>
           </Grid>
+          <Grid item xs={12}>
+            <Typography className={classesTypography.p}>
+              {post.content}
+            </Typography>
+          </Grid>
         </Grid>
       </Container>
       <Footer />
